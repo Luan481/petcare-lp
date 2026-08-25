@@ -1,3 +1,4 @@
+import Funcionalidades from './components/funcionalidades'
 import Hero from './components/hero'
 import Navbar from './components/NavBar'
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <Navbar />
       <Hero />
+      <Funcionalidades />
     </>
   )
 }

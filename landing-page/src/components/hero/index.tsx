@@ -3,21 +3,21 @@ import { IoMdStar } from "react-icons/io";
 
 export default function Hero() {
     return (
-        <section className="flex flex-col justify-center items-center p-20">
+        <section className="flex flex-col justify-center items-center p-15">
             <div className="bg-[#DCEFE4] flex p-2 rounded-full items-center gap-2 ">
                 <MdOutlinePets size={12} color="#3F9271" />
                 <p className=" text-xs font-bold text-[#153229]">Feito para tutores atentos</p>
             </div>
 
-            <div className="text-center text-5xl m-10">
-                <h1 className="font-black text-[#153229]">Toda a rotina do seu pet,</h1>
-                <h1 className="font-black text-[#FF6B4A]">numa coleira só</h1>
+            <div className="text-center text-5xl m-8 max-w-[580px]">
+                <h1 className="font-black text-[#153229]">Toda a rotina do seu pet, <span className=" text-[#FF6B4A]">numa coleira só</span></h1>
+                {/* <h1 className="font-black "></h1> */}
             </div>
 
             <p className=" text-center w-lg text-[#153229]">Agende consultas. Acompanhe vacinas e fale com veterinárias sem sair do app. O PetCare organiza o que seu pet precisa, antes de você precisar lembrar.</p>
 
             <div className="flex gap-10 m-10 items-center">
-                <a href="" className="font-black bg-[#FF6B4A] py-3 px-5 text-white rounded-full">Ver funcionalidades</a>
+                <a href="" className="font-black bg-[#FF6B4A] py-3 px-5 text-white rounded-full shadow-md shadow-[#FF6B4A]">Ver funcionalidades</a>
 
                 <a href="" className=" border-2 border-[#ccc] py-3 px-5 rounded-full font-black text-[#153229]">Falar com um veterinário</a>
             </div>
