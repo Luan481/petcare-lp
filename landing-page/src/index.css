@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
 :root{
-  background-color: #FBF9F4;
+  background-color: #eeede9;
+  font-family: 'Baloo 2', sans-serif;
 }
+
