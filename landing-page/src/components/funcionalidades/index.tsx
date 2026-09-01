@@ -5,6 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoChatboxOutline } from "react-icons/io5";
 import { FaRegClock } from "react-icons/fa";
 import { BsBasket } from "react-icons/bs";
+import cards from "./cards";
 
 
 
@@ -19,7 +20,16 @@ export default function Funcionalidades() {
             <p className="text-[#153229] text-center max-w-[530px]">Da vacina ao passeio, o Petcare acompanha cada etapa do cuidado - pra você nunca perder nada de vista.</p>
 
             <div className="grid grid-cols-3 gap-5 m-10">
-               <Cards 
+                {cards.map((card) => (
+                    <Cards
+                        key={card.id}
+                        title={card.title}
+                        description={card.description}
+                        icon={card.icon}
+                        background={card.background}
+                    />
+                ))}
+                {/* <Cards 
                 title="Agendamento de consultas" 
                 description="marque horários com clínicas parceiras em poucos toques e receba lembretes automáticos." 
                 icon={<LuCalendar size={20} color="#153229"  />}
@@ -54,7 +64,7 @@ export default function Funcionalidades() {
                 description="Ração, medicamentos e acessórios recomendados, com entrega direto na sua casa." 
                 icon={<BsBasket size={20} color="#F5B942"  />}
                 backround="bg-[#f3eddb]"
-                />   
+                />    */}
             </div>
         </section>
     )

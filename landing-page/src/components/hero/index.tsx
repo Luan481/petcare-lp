@@ -1,5 +1,6 @@
 import { MdOutlinePets } from "react-icons/md";
 import { IoMdStar } from "react-icons/io";
+import Button from "../Buttons";
 
 export default function Hero() {
     return (
@@ -17,9 +18,23 @@ export default function Hero() {
             <p className=" text-center w-lg text-[#153229]">Agende consultas. Acompanhe vacinas e fale com veterinárias sem sair do app. O PetCare organiza o que seu pet precisa, antes de você precisar lembrar.</p>
 
             <div className="flex gap-10 m-10 items-center">
-                <a href="" className="font-black bg-[#FF6B4A] py-3 px-5 text-white rounded-full shadow-md shadow-[#FF6B4A]">Ver funcionalidades</a>
+                {/* <a href="" className="font-black bg-[#FF6B4A] py-3 px-5 text-white rounded-full shadow-md shadow-[#FF6B4A]">Ver funcionalidades</a> */}
+                <Button
+                    text="Ver Funcionalidades"
+                    bgColor="bg-[#FF6B4A]"
+                    textColor="text-white"
+                />
+                
+                <Button
+                    text="Falar com um veterinário"
+                    bgColor="bg-transparent"
+                    textColor="text-[#153229]"
+                    fontSize="font-black"
+                    isBorder
+                    border="border-2 border-[#ccc]"
+                />
 
-                <a href="" className=" border-2 border-[#ccc] py-3 px-5 rounded-full font-black text-[#153229]">Falar com um veterinário</a>
+                {/* <a href="" className=" border-2 border-[#ccc] py-3 px-5 rounded-full font-black text-[#153229]">Falar com um veterinário</a> */}
             </div>
 
             <div >
@@ -30,7 +45,7 @@ export default function Hero() {
                     </li>
 
                     <li>
-                        <h2 className="flex items-center justify-center font-black text-center gap-1">4,9 <IoMdStar  size={24}/></h2>
+                        <h2 className="flex items-center justify-center font-black text-center gap-1">4,9 <IoMdStar size={24} /></h2>
                         <p className="text-xs">avaliação média</p>
                     </li>
 

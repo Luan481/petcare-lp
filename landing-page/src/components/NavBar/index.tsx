@@ -1,5 +1,6 @@
 import { MdOutlinePets } from "react-icons/md";
 import { GrSchedule } from "react-icons/gr";
+import Button from "../Buttons";
 export default function Navbar() {
 
     return (
@@ -25,7 +26,8 @@ export default function Navbar() {
                 </ul>
             </nav>
 
-            <a href="" className="hidden md:block bg-[#153229] text-white font-medium text-sm px-6 py-2.5 rounded-full shadow-2xl">Agendar Consulta</a>
+            {/* <a href="" className="hidden md:block bg-[#153229] text-white font-medium text-sm px-6 py-2.5 rounded-full shadow-2xl">Agendar Consulta</a> */}
+            <Button text="Agendar Consulta" bgColor="bg-[#153229]" textColor="text-white"/>
             <div  className="block md:hidden  bg-[#153229] p-2 rounded-full">
             <a href=""><GrSchedule color="#fff" size={14}/></a>
             </div>
