@@ -1,17 +1,17 @@
 import express, {Request, type Response} from "express";
-import { error } from "node:console";
-import { randomUUID } from "node:crypto";
+import { randomUUID } from "node:crypto"
+import { clientesRouter } from "./routes/clientes.routes";
+import { animaisRouter } from "./routes/animais.routes";
 
 const app = express()
 const port = 3000
 
 app.use(express.json())
 
-app.get("/health", (_request: Request, response: Response) =>{
-    return response.json({
-        status: "OK"
-    })
-})
+
+app.use("/cliente", clientesRouter)
+app.use("/animais", animaisRouter);
+
 
 interface CreateUserBody{
     name: string;
