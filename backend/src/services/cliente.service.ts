@@ -19,9 +19,9 @@ class ClienteService {
         }
     }
 
-    async getAll() {
+    async getAll(): Promise<Cliente[]> {
         try {
-            const res = await pool.query("SELECT * FROM clientes");
+            const res = await pool.query<Cliente>("SELECT * FROM clientes");
             console.log(res.rows)
             return res.rows;
         } catch (error) {

@@ -10,9 +10,13 @@ clientesRouter.get("/", async (_request: Request, response: Response) => {
     try {
         const res = await clienteService.getAll()
 
-        response.json(res)
+        return response.json(res)
     } catch (error) {
+        console.error(error)
 
+        return response.status(500).json({
+            error: "Erro Interno"
+        }) 
     }
 
 })
@@ -20,10 +24,6 @@ clientesRouter.get("/", async (_request: Request, response: Response) => {
 clientesRouter.post("/", async (_request: Request< {}, {},CriarCliente>, response: Response, ) => {
     try {
         const { nome, telefone, idade, email } = _request.body;
-
-        if(!email){
-            response.json("Valor inválido")
-        }
 
         const cliente = await clienteService.create(
             nome,
