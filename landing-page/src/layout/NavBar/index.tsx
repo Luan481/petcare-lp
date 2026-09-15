@@ -1,6 +1,6 @@
 import { MdOutlinePets } from "react-icons/md";
 import { GrSchedule } from "react-icons/gr";
-import Button from "../Buttons";
+import Button from "../../components/Buttons";
 export default function Navbar() {
 
     return (

@@ -1,6 +1,6 @@
 import { MdOutlinePets } from "react-icons/md";
 import { IoMdStar } from "react-icons/io";
-import Button from "../Buttons";
+import Button from "../../components/Buttons";
 
 export default function Hero() {
     return (

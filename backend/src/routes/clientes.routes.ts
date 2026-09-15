@@ -23,14 +23,10 @@ clientesRouter.get("/", async (_request: Request, response: Response) => {
 
 clientesRouter.post("/", async (_request: Request< {}, {},CriarCliente>, response: Response, ) => {
     try {
-        const { nome, telefone, idade, email } = _request.body;
+        const dados = _request.body;
+        
 
-        const cliente = await clienteService.create(
-            nome,
-            telefone,
-            idade,
-            email
-        );
+        const cliente = await clienteService.create(dados)
 
         return response.status(201).json(cliente);
     } catch (error) {

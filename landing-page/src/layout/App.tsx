@@ -1,6 +1,8 @@
-import Funcionalidades from '../components/funcionalidades'
-import Hero from '../components/hero'
-import Navbar from '../components/NavBar'
+import Funcionalidades from './funcionalidades'
+import Hero from '../layout/hero'
+import Navbar from '../layout/NavBar'
+import StartNow from '../components/StartNow'
+import Contact from './contact'
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <Navbar />
       <Hero />
       <Funcionalidades />
+      <StartNow />
+      <Contact />
     </>
   )
 }

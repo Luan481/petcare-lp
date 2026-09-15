@@ -1,4 +1,4 @@
-import Cards from "../Cards";
+import Cards from "../../components/Cards";
 import { LuCalendar } from "react-icons/lu";
 import { PiSyringeBold } from "react-icons/pi";
 import { FaRegHeart } from "react-icons/fa";

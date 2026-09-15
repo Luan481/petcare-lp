@@ -1,18 +1,25 @@
 import { promises } from "node:dns";
 import { pool } from "../database/connection.js";
-import { Cliente } from "../types/cliente.js";
+import { Cliente, CriarCliente } from "../types/cliente.js";
+import { error } from "node:console";
 
 class ClienteService {
-    async create(nome: string, telefone: string, idade: number, email: string): Promise <Cliente> {
+    async create(dados: CriarCliente): Promise <Cliente> {
         try {
             const res = await pool.query<Cliente>(
                 `INSERT INTO clientes (nome, telefone, idade, email)
                  VALUES ($1, $2, $3, $4)
                  RETURNING *`,
-                [nome, telefone, idade, email]
+                [dados.nome, dados.telefone, dados.idade, dados.email]
             );
 
-            return res.rows[0];
+            const cliente =  res.rows[0];
+            if(!cliente){
+                throw new Error("O banco não retornou cliente cadastrado")
+            }
+
+            return cliente
+            
         } catch (error) {
             console.error("Erro ao criar cliente:", error);
             throw new Error("Erro no banco de dados");
