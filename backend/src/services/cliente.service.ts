@@ -4,7 +4,7 @@ import { Cliente, CriarCliente } from "../types/cliente.js";
 import { error } from "node:console";
 
 class ClienteService {
-    async create(dados: CriarCliente): Promise <Cliente> {
+    async create(dados: CriarCliente): Promise<Cliente> {
         try {
             const res = await pool.query<Cliente>(
                 `INSERT INTO clientes (nome, telefone, idade, email)
@@ -13,13 +13,13 @@ class ClienteService {
                 [dados.nome, dados.telefone, dados.idade, dados.email]
             );
 
-            const cliente =  res.rows[0];
-            if(!cliente){
+            const cliente = res.rows[0];
+            if (!cliente) {
                 throw new Error("O banco não retornou cliente cadastrado")
             }
 
             return cliente
-            
+
         } catch (error) {
             console.error("Erro ao criar cliente:", error);
             throw new Error("Erro no banco de dados");
@@ -33,6 +33,25 @@ class ClienteService {
             return res.rows;
         } catch (error) {
             console.error("Erro ao buscar clientes:", error);
+            throw new Error("Erro no banco de dados");
+        }
+    }
+    async getById(id: number): Promise<Cliente> {
+        try {
+            const res = await pool.query<Cliente>(
+                "SELECT * FROM clientes WHERE id = $1",
+                [id]
+            );
+
+            const cliente = res.rows[0];
+
+            if (!cliente) {
+                throw new Error("Cliente não encontrado");
+            }
+
+            return cliente;
+        } catch (error) {
+            console.error("Erro ao buscar cliente por ID:", error);
             throw new Error("Erro no banco de dados");
         }
     }

@@ -16,15 +16,37 @@ clientesRouter.get("/", async (_request: Request, response: Response) => {
 
         return response.status(500).json({
             error: "Erro Interno"
-        }) 
+        })
     }
 
 })
 
-clientesRouter.post("/", async (_request: Request< {}, {},CriarCliente>, response: Response, ) => {
+clientesRouter.get("/:id", async (request: Request<{ id: string }>, response: Response) => {
+    try {
+        const id = Number(request.params.id);
+
+        if (isNaN(id)) {
+            return response.status(400).json({
+                message: "ID inválido",
+            });
+        }
+
+        const cliente = await clienteService.getById(id);
+
+        return response.json(cliente);
+    } catch (error) {
+        console.error(error);
+
+        return response.status(404).json({
+            message: "Cliente não encontrado",
+        });
+    }
+});
+
+clientesRouter.post("/", async (_request: Request<{}, {}, CriarCliente>, response: Response,) => {
     try {
         const dados = _request.body;
-        
+
 
         const cliente = await clienteService.create(dados)
 
