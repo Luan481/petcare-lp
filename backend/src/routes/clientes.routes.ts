@@ -23,9 +23,9 @@ clientesRouter.get("/", async (_request: Request, response: Response) => {
 
 clientesRouter.get("/:id", async (request: Request<{ id: string }>, response: Response) => {
     try {
-        const id = Number(request.params.id);
+        const id = String(request.params.id);
 
-        if (isNaN(id)) {
+        if (!String(id)) {
             return response.status(400).json({
                 message: "ID inválido",
             });

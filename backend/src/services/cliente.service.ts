@@ -36,7 +36,7 @@ class ClienteService {
             throw new Error("Erro no banco de dados");
         }
     }
-    async getById(id: number): Promise<Cliente> {
+    async getById(id: string): Promise<Cliente> {
         try {
             const res = await pool.query<Cliente>(
                 "SELECT * FROM clientes WHERE id = $1",
