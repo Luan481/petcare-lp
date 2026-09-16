@@ -59,3 +59,25 @@ clientesRouter.post("/", async (_request: Request<{}, {}, CriarCliente>, respons
         });
     }
 })
+
+clientesRouter.patch("/inativar/:id", async (request: Request<{ id: string }>, response: Response) => {
+    try {
+        const id = String(request.params.id);
+
+        if (!String(id)) {
+            return response.status(400).json({
+                message: "ID inválido",
+            });
+        }
+
+        const cliente = await clienteService.inativar(id);
+
+        return response.json(cliente);
+    } catch (error) {
+        console.error(error);
+
+        return response.status(404).json({
+            message: "Cliente não encontrado",
+        });
+    }
+});

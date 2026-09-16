@@ -39,7 +39,7 @@ class ClienteService {
     async getById(id: string): Promise<Cliente> {
         try {
             const res = await pool.query<Cliente>(
-                "SELECT * FROM clientes WHERE id = $1",
+                "SELECT * FROM clientes WHERE id = $1 RETURNG *",
                 [id]
             );
 
@@ -52,6 +52,22 @@ class ClienteService {
             return cliente;
         } catch (error) {
             console.error("Erro ao buscar cliente por ID:", error);
+            throw new Error("Erro no banco de dados");
+        }
+    }
+
+    async inativar(id: string): Promise<Cliente[]> {
+        try {
+            const res = await pool.query<Cliente>(
+                "UPDATE clientes SET status = 'inativo' WHERE id = $1", [id]
+            )
+
+            const cliente = res.rows
+
+            return cliente
+        }
+        catch (error) {
+            console.error("Erro ao inativar cliente por ID:", error);
             throw new Error("Erro no banco de dados");
         }
     }

@@ -14,7 +14,7 @@ class AnimaisService {
     async getById(id: string) {
         try {
             const res = await pool.query(
-                "SELECT * FROM animais WHERE id = $1",
+                "SELECT * FROM animais WHERE id = $1 RETURNG *",
                 [id]
             );
 
