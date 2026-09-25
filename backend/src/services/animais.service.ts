@@ -1,9 +1,10 @@
 import { pool } from "../database/connection.js";
+import { Animal, CriarAnimal } from "../types/animal.js";
 
 class AnimaisService {
-    async getAll() {
+    async getAll(): Promise<Animal[]>{
         try {
-            const res = await pool.query("SELECT * FROM animais");
+            const res = await pool.query<Animal>("SELECT * FROM animal");
             console.log(res.rows)
             return res.rows;
         } catch (error) {
@@ -11,10 +12,13 @@ class AnimaisService {
             throw new Error("Erro no banco de dados");
         }
     }
-    async getById(id: string) {
+    async getById(dados: Animal) {
         try {
+
+            const id = dados.id
+
             const res = await pool.query(
-                "SELECT * FROM animais WHERE id = $1 RETURNG *",
+                "SELECT * FROM animal WHERE id = $1 RETURNG *",
                 [id]
             );
 

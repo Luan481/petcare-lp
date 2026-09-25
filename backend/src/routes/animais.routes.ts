@@ -1,5 +1,6 @@
 import { Router, Request, type Response } from "express";
 import { animaisService } from "../services/animais.service";
+import { Animal } from "../types/animal";
 
 export const animaisRouter = Router()
 
@@ -14,9 +15,9 @@ animaisRouter.get("/", async (_request: Request, response: Response) => {
 
 })
 
-animaisRouter.get("/:id", async (request: Request<{ id: string }>, response: Response) => {
+animaisRouter.get("/:id", async (request: Request<{id: Animal}>, response: Response) => {
     try {
-        const id = String(request.params.id);
+        const id = request.params.id
 
         if (!String(id)) {
             return response.status(400).json({
@@ -24,9 +25,9 @@ animaisRouter.get("/:id", async (request: Request<{ id: string }>, response: Res
             });
         }
 
-        const cliente = await animaisService.getById(id);
+        const animal = await animaisService.getById(id);
 
-        return response.json(cliente);
+        return response.json(animal);
     } catch (error) {
         console.error(error);
 

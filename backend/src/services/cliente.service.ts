@@ -1,13 +1,11 @@
-import { promises } from "node:dns";
 import { pool } from "../database/connection.js";
 import { Cliente, CriarCliente } from "../types/cliente.js";
-import { error } from "node:console";
 
 class ClienteService {
     async create(dados: CriarCliente): Promise<Cliente> {
         try {
             const res = await pool.query<Cliente>(
-                `INSERT INTO clientes (nome, telefone, idade, email)
+                `INSERT INTO cliente (nome, telefone, idade, email)
                  VALUES ($1, $2, $3, $4)
                  RETURNING *`,
                 [dados.nome, dados.telefone, dados.idade, dados.email]
@@ -28,7 +26,7 @@ class ClienteService {
 
     async getAll(): Promise<Cliente[]> {
         try {
-            const res = await pool.query<Cliente>("SELECT * FROM clientes");
+            const res = await pool.query<Cliente>("SELECT * FROM cliente");
             console.log(res.rows)
             return res.rows;
         } catch (error) {
@@ -39,7 +37,7 @@ class ClienteService {
     async getById(id: string): Promise<Cliente> {
         try {
             const res = await pool.query<Cliente>(
-                "SELECT * FROM clientes WHERE id = $1 RETURNG *",
+                "SELECT * FROM cliente WHERE id = $1 RETURNG *",
                 [id]
             );
 
@@ -59,7 +57,7 @@ class ClienteService {
     async inativar(id: string): Promise<Cliente[]> {
         try {
             const res = await pool.query<Cliente>(
-                "UPDATE clientes SET status = 'inativo' WHERE id = $1", [id]
+                "UPDATE cliente SET status = 'inativo' WHERE id = $1", [id]
             )
 
             const cliente = res.rows
@@ -68,6 +66,22 @@ class ClienteService {
         }
         catch (error) {
             console.error("Erro ao inativar cliente por ID:", error);
+            throw new Error("Erro no banco de dados");
+        }
+    }
+
+    async ativar(id: string): Promise<Cliente[]> {
+        try {
+            const res = await pool.query<Cliente>(
+                "UPDATE cliente SET status = 'ativo' WHERE id = $1", [id]
+            )
+
+            const cliente = res.rows
+
+            return cliente
+        }
+        catch (error) {
+            console.error("Erro ao ativar cliente por ID:", error);
             throw new Error("Erro no banco de dados");
         }
     }
