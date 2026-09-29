@@ -10,7 +10,7 @@ export default function Hero() {
                 <p className=" text-xs font-bold text-[#153229]">Feito para tutores atentos</p>
             </div>
 
-            <div className="text-center text-5xl m-8 max-w-[580px]">
+            <div className="text-center text-5xl m-8 max-w-145">
                 <h1 className="font-black text-[#153229]">Toda a rotina do seu pet, <span className=" text-[#FF6B4A]">numa coleira só</span></h1>
                 {/* <h1 className="font-black "></h1> */}
             </div>

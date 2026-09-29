@@ -1,4 +1,4 @@
-import React, { useState, type SyntheticEvent } from "react";
+import React, { useState, } from "react";
 import { FaCommentDots, FaHeart, FaMapMarkerAlt } from "react-icons/fa";
 import emailjs from "@emailjs/browser"
 export default function Contact() {

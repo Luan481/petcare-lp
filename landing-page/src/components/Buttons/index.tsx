@@ -1,5 +1,6 @@
+
 interface buttonProps{
-    text: string
+    text: string | React.ReactElement
     bgColor: string
     textColor: string
     fontSize?: string
@@ -11,7 +12,7 @@ export default function Button({border, link, bgColor, text, textColor, fontSize
     return (
     <a 
     href={link}
-    className={`hidden md:block ${isBorder ? border : ""} ${bgColor} ${textColor} ${fontSize} text-sm px-6 py-2.5 rounded-full shadow-2xl cursor-pointer ${border}`}>
+    className={`hidden md:block ${isBorder ? border : ""} ${bgColor} ${textColor} ${fontSize} text-sm px-6 py-2.5 rounded-full shadow-2xl cursor-pointer ${border} text-center`}>
         {text}
     </a>
     )
