@@ -27,7 +27,7 @@ export default function Contact() {
     }
 
     return (
-        <section className="mx-20 my-40 rounded-3xl bg-white border border-[#ccc] flex overflow-hidden">
+        <section className="mx-20 my-40 rounded-3xl bg-white border border-[#ccc] flex overflow-hidden" id="contato">
             <div className="bg-[#153229] py-10 pl-10 pr-10 w-full max-w-md">
                 <p className="text-white bg-white/10 w-fit text-center rounded-full text-xs py-2 px-4">
                     Fale com a gente

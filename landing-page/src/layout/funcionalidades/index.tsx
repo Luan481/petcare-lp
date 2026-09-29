@@ -1,10 +1,4 @@
 import Cards from "../../components/Cards";
-import { LuCalendar } from "react-icons/lu";
-import { PiSyringeBold } from "react-icons/pi";
-import { FaRegHeart } from "react-icons/fa";
-import { IoChatboxOutline } from "react-icons/io5";
-import { FaRegClock } from "react-icons/fa";
-import { BsBasket } from "react-icons/bs";
 import cards from "./cards";
 
 
@@ -12,7 +6,7 @@ import cards from "./cards";
 
 export default function Funcionalidades() {
     return (
-        <section className="flex flex-col px-20 items-center mt-5">
+        <section className="flex flex-col px-20 items-center mt-5" id="funcionalidades">
             <div className="bg-[#DCEFE4] flex p-2 rounded-full items-center gap-2 ">
                 <p className=" text-xs font-bold text-[#153229]">Funcionalidades</p>
             </div>

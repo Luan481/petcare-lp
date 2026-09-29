@@ -4,7 +4,7 @@ import Button from "../../components/Buttons";
 export default function Navbar() {
 
     return (
-        <header className="px-5 md:px-20 py-6 flex items-center justify-between border-b border-b-[#ccc]">
+        <header className="px-5 md:px-20 py-6 flex items-center justify-between border-b border-b-[#ccc]" id="inicio">
 
             <div className="flex gap-2">
                 <MdOutlinePets size={24} color="#3F9271" />

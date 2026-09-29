@@ -3,5 +3,6 @@
 :root{
   background-color: #eeede9;
   font-family: 'Baloo 2', sans-serif;
+  scroll-behavior: smooth;
 }
 

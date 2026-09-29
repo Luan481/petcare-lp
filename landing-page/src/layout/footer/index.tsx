@@ -26,9 +26,9 @@ export default function Footer() {
                     <div>
                         <h2 className="text-xl text-white mb-4">PRODUTO</h2>
                         <ul >
-                            <li className="py-2"><a href="">Início</a></li>
-                            <li className="py-2"><a href="">Funcionalidades</a></li>
-                            <li className="py-2"><a href="">Planos</a></li>
+                            <li className="py-2"><a href="#inicio">Início</a></li>
+                            <li className="py-2"><a href="#funcionalidades">Funcionalidades</a></li>
+                            <li className="py-2"><a href="#planos">Planos</a></li>
                         </ul>
                     </div>
 
@@ -44,7 +44,7 @@ export default function Footer() {
                     <div>
                         <h2 className="text-xl text-white mb-4">CONTATO</h2>
                         <ul>
-                            <li className="py-2"><a href="">contato@petcare.app</a></li>
+                            <li className="py-2"><a href="#contato">contato@petcare.app</a></li>
                             <li className="py-2"><a href="">(48)99999-0000</a></li>
                             <li className="py-2"><a href="">Florianópolis, SC</a></li>
                         </ul>
