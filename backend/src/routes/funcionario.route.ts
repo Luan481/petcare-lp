@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express"
 import { funcionarioService } from "../services/funcionario.service"
-import { CriarFuncionario } from "../types/funcionario"
+import { CriarFuncionario, Funcionario, FuncionarioProps } from "../types/funcionario"
 
 export const funcionarioRouter = Router()
 
@@ -19,29 +19,8 @@ funcionarioRouter.get("/", async (_request: Request, response: Response) => {
 
 })
 
-funcionarioRouter.get("/:id", async (request: Request<{ id: string }>, response: Response) => {
-    try {
-        const id = request.params.id
 
-        if (!id) {
-            return response.status(400).json({
-                message: "ID inválido",
-            });
-        }
-
-        const cliente = await funcionarioService.getById(id);
-
-        return response.json(cliente);
-    } catch (error) {
-        console.error(error);
-
-        return response.status(404).json({
-            message: "Funcionário não encontrado",
-        });
-    }
-});
-
-funcionarioRouter.post("/", async (_request: Request<{}, {}, CriarFuncionario>, response: Response,) => {
+funcionarioRouter.post("/", async (_request: Request<{}, {}, FuncionarioProps>, response: Response,) => {
     try {
         const dados = _request.body;
 
@@ -58,9 +37,9 @@ funcionarioRouter.post("/", async (_request: Request<{}, {}, CriarFuncionario>, 
     }
 })
 
-funcionarioRouter.patch("/inativar/:id", async (request: Request<{ id: string }>, response: Response) => {
+funcionarioRouter.patch("/inativar/:id", async (request: Request<{ id: Funcionario['id'] }>, response: Response) => {
     try {
-        const id = String(request.params.id);
+        const id = request.params.id
 
         if (!String(id)) {
             return response.status(400).json({

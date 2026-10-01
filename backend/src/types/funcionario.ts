@@ -23,3 +23,20 @@ export interface EditarFuncionario {
     Novoid_cargo: string
     ativo: boolean
 }
+export interface FuncionarioProps {
+
+    nome:string ;
+    email: string;
+    telefone: string;
+    cargo_id: number;
+    senha: string;
+}
+
+export interface ConsultaProps {
+
+    animal_id: string;
+    funcionario_id: string;
+    data_consulta: string;
+    motivo: string;
+
+}
