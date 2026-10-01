@@ -18,7 +18,7 @@ export class AuthService {
 const secret = process.env.JWT_SECRET || 'super-chave-secreta-petcare';
 
 const token = jwt.sign(
-  { id: funcionario.id, cargo_id: funcionario.cargo_id },
+  { id: funcionario.id, id_cargo: funcionario.id_cargo },
   secret,
   { expiresIn: '8h' }
 );

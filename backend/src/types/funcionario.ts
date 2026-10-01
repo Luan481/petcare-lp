@@ -27,8 +27,7 @@ export interface FuncionarioProps {
 
     nome:string ;
     email: string;
-    telefone: string;
-    cargo_id: number;
+    id_cargo: number;
     senha: string;
 }
 

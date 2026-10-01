@@ -10,11 +10,11 @@ class FuncionarioService {
     const senhaHash = await bcrypt.hash(data.senha,10);
 
     const query = `
-      INSERT INTO funcionario (nome, email, telefone, cargo_id ,senha)
-      VALUES ($1, $2, $3, $4, $5) 
+      INSERT INTO funcionario (nome, email, id_cargo ,senha)
+      VALUES ($1, $2, $3, $4) 
       RETURNING *;
     `;
-    const values = [data.nome, data.email, data.telefone, data.cargo_id,senhaHash];
+    const values = [data.nome, data.email, data.id_cargo,senhaHash];
     
     const result = await pool.query(query, values);
     return result.rows[0];
@@ -32,6 +32,14 @@ class FuncionarioService {
       SET deleted_at = NOW() 
       WHERE id = $1 
       RETURNING *;
+    `;
+    const result = await pool.query(query, [id]);
+    return result.rows[0];
+  }
+
+    async getById(id: string) {
+    const query = `
+      SELECT * FROM funcionario where id = $1
     `;
     const result = await pool.query(query, [id]);
     return result.rows[0];

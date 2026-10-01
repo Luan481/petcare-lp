@@ -20,6 +20,9 @@ funcionarioRouter.get("/", async (_request: Request, response: Response) => {
 })
 
 
+
+
+
 funcionarioRouter.post("/", async (_request: Request<{}, {}, FuncionarioProps>, response: Response,) => {
     try {
         const dados = _request.body;
@@ -48,6 +51,28 @@ funcionarioRouter.patch("/inativar/:id", async (request: Request<{ id: Funcionar
         }
 
         const cliente = await funcionarioService.inativar(id);
+
+        return response.json(cliente);
+    } catch (error) {
+        console.error(error);
+
+        return response.status(404).json({
+            message: "Funcionário não encontrado",
+        });
+    }
+});
+
+funcionarioRouter.get("/:id", async (request: Request<{ id: Funcionario['id'] }>, response: Response) => {
+    try {
+        const id = request.params.id
+
+        if (!String(id)) {
+            return response.status(400).json({
+                message: "ID inválido",
+            });
+        }
+
+        const cliente = await funcionarioService.getById(id);
 
         return response.json(cliente);
     } catch (error) {
