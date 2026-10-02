@@ -11,7 +11,7 @@ export interface CriarFuncionario {
     nome:string
     email: string
     senha: string
-    id_cargo: string
+    idCargo: string
     ativo: boolean
 }
 
@@ -27,7 +27,7 @@ export interface FuncionarioProps {
 
     nome:string ;
     email: string;
-    id_cargo: number;
+    idCargo: number;
     senha: string;
 }
 

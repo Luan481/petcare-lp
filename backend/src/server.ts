@@ -14,6 +14,7 @@ import { petDonoRouter } from "./routes/pet_dono.route";
 import { registroPontoRouter } from "./routes/registro_ponto.route";
 import { servicoRouter } from "./routes/servico.route";
 import { vendaRouter } from "./routes/venda.route";
+import { authRoutes } from "./routes/auth.routes";
 
 
 const app = express()
@@ -37,6 +38,7 @@ app.use("/pet_dono", petDonoRouter)
 app.use("/registro_ponto", registroPontoRouter)
 app.use("/servico", servicoRouter)
 app.use("/venda", vendaRouter)
+app.use("/auth", authRoutes)
 
 
 
