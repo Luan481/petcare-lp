@@ -15,13 +15,14 @@ import { registroPontoRouter } from "./routes/registro_ponto.route";
 import { servicoRouter } from "./routes/servico.route";
 import { vendaRouter } from "./routes/venda.route";
 import { authRoutes } from "./routes/auth.routes";
+import { ensureAuth } from "./middleware/authmiddleware.js";
 
 
 const app = express()
 const port = 3000
 
 app.use(express.json())
-
+app.use(ensureAuth)
 
 app.use("/cliente", clientesRouter)
 app.use("/animais", animaisRouter);
